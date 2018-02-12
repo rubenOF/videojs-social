@@ -26,7 +26,8 @@
         },
         social,
         SocialButton,
-        SocialOverlay;
+        SocialOverlay,
+        SocialInlineButton;
 
     /**
      * Initialize the plugin.
@@ -98,8 +99,24 @@
             player.socialOverlay.open();
         }
     });
-
     videojs.registerComponent('SocialButton', SocialButton);
+
+
+    /*
+     * The "Share" inline button
+     */
+    SocialInlineButton = videojs.extend(videojs.getComponent('Button'), {
+        controlText_: 'Share',
+        buildCSSClass() {
+            return 'vjs-share-control';
+        },
+        handleClick(event) {
+            var player = this.player();
+
+            player.socialOverlay.open();
+        },
+    });
+    videojs.registerComponent('SocialInlineButton', SocialInlineButton);
 
     /*
      * The overlay panel that is toggled when the SocialButton is clicked
