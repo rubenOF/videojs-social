@@ -25,42 +25,38 @@
 }
 .video-js .vjs-share-control:focus,
 .video-js .vjs-share-control:hover {
-    border-color: #fff;
-    background-color: #73859f;
-    background-color: rgba(115,133,159,.5);
-    -webkit-transition: all 0s;
-    -moz-transition: all 0s;
-    -ms-transition: all 0s;
-    -o-transition: all 0s;
-    transition: all 0s;
+  border-color: #fff;
+  background-color: #73859f;
+  background-color: rgba(115,133,159,.5);
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
 }
 .video-js .vjs-share-control {
-    font-size: 3em;
-    line-height: 1.5em;
-    height: 1.5em;
-    width: 2em;
-    display: block;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 0;
-    cursor: pointer;
-    opacity: 1;
-    border: .06666em solid #fff;
-    background-color: #2b333f;
-    background-color: rgba(43,51,63,.7);
-    -webkit-border-radius: .3em;
-    -moz-border-radius: .3em;
-    border-radius: .3em;
-    -webkit-transition: all .4s;
-    -moz-transition: all .4s;
-    -ms-transition: all .4s;
-    -o-transition: all .4s;
-    transition: all .4s;
-}
-.video-js .vjs-share-control {
-    top: 10px;
-    right: 10px;
+  font-size: 3em;
+  line-height: 1.5em;
+  height: 1.5em;
+  width: 2em;
+  display: block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0;
+  cursor: pointer;
+  opacity: 1;
+  border: .06666em solid #fff;
+  background-color: #2b333f;
+  background-color: rgba(43,51,63,.7);
+  -webkit-border-radius: .3em;
+  -moz-border-radius: .3em;
+  border-radius: .3em;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -ms-transition: all .4s;
+  -o-transition: all .4s;
+  transition: all .4s;
 }
 .vjs-share-control .vjs-icon-placeholder:before {
   content: "\f10f";
@@ -69,6 +65,21 @@
   font-style: normal;
 }
 
+.vjs-controls-disabled .vjs-share-control, .vjs-error .vjs-share-control, .vjs-has-started .vjs-share-control, .vjs-using-native-controls .vjs-share-control {
+  opacity: 0;
+}
+.vjs-paused .vjs-share-control, .vjs-paused.vjs-has-started .vjs-share-control, .vjs-user-active .vjs-share-control {
+  opacity: 1;
+}
+
 .video-js .vjs-modal-dialog.vjs-sharing-container {
   background: rgba(0,0,0,.8);
+}
+.vjs-share-button .vjs-icon-placeholder::before {
+  content: "\f10f";
+}
+.video-js .vjs-share-button .vjs-icon-placeholder {
+  font-family: VideoJS;
+  font-weight: 400;
+  font-style: normal;
 }
