@@ -90,10 +90,11 @@
      * The "Share" control bar button
      */
     SocialButton = videojs.extend(videojs.getComponent('Button'), {
-        buildCSSClass() {
-            return 'vjs-icon-share vjs-control vjs-button vjs-menu-button';
+        controlText_: 'Share',
+        buildCSSClass: function() {
+            return 'vjs-share-button vjs-control vjs-button vjs-menu-button';
         },
-        handleClick(event) {
+        handleClick: function(event) {
             var player = this.player();
 
             player.socialOverlay.open();
@@ -101,16 +102,15 @@
     });
     videojs.registerComponent('SocialButton', SocialButton);
 
-
     /*
      * The "Share" inline button
      */
     SocialInlineButton = videojs.extend(videojs.getComponent('Button'), {
         controlText_: 'Share',
-        buildCSSClass() {
+        buildCSSClass: function() {
             return 'vjs-share-control';
         },
-        handleClick(event) {
+        handleClick: function(event) {
             var player = this.player();
 
             player.socialOverlay.open();
@@ -123,16 +123,16 @@
      */
     var ModalDialog = videojs.getComponent('ModalDialog');
     SocialOverlay = videojs.extend(ModalDialog, {
-        buildCSSClass() {
+        buildCSSClass: function() {
             var buttonClass = ModalDialog.prototype.buildCSSClass();
             return 'vjs-sharing-container ' + buttonClass;
         },
-        content() {
+        content: function() {
             var options = this.options_;
 
             return this._addSocialButtons(options.services);
         },
-        open() {
+        open: function() {
             ModalDialog.prototype.open.call(this);
             var options = this.options_;
 
