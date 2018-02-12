@@ -138,12 +138,12 @@
         var service, el, title;
 
         el = videojs.dom.createEl('div', {
-            className: 'jw-sharing-content',
+            className: 'vjs-sharing-content',
             innerHTML: '<div/>',
         });
         title = el.firstChild;
-        title.className += ' jw-sharing-heading jw-reset';
-        title.innerHTML = 'Diel fideo';
+        title.className += ' vjs-sharing-heading';
+        title.innerHTML = player.localize('Share video');
 
         // Iterate through supported services and construct html
         for (service in services) {
@@ -286,7 +286,6 @@
 
         // If there's no title try and find one in the options
         if (!title) {
-
             // Get player options
             playerOptions = player.options_;
 
@@ -295,10 +294,6 @@
                 title = playerOptions['data-media'].title;
             }
         }
-
-        // if (!title) {
-        //     title = document.title;
-        // }
 
         return title || '';
     };
