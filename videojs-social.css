@@ -1,0 +1,20 @@
+.vjs-sharing-container .jw-sharing-content {
+  display: table-cell;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+  text-align: center;
+}
+.vjs-sharing-container .vjs-modal-dialog-content {
+  display: table;
+}
+.vjs-sharing-container .vjs-sharing-icon-container {
+  height: 44px;
+  width: 44px;
+  font-size: 40px;
+  display: inline-block;
+}
+
+.video-js .vjs-modal-dialog.vjs-sharing-container {
+  background: rgba(0,0,0,.8);
+}
