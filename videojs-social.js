@@ -67,13 +67,10 @@
                     delete player.socialOverlay;
                 }
             }
+            // // Add social button to player
+            videojs.options.children.push('socialButton');
 
-            // Add social button to player
-            controlBar.socialButton = player.controlBar.addChild('socialButton', settings);
             player.socialOverlay = player.addChild('socialOverlay', settings);
-
-            // Add tabindex
-            controlBar.socialButton.el().setAttribute('tabindex', '0');
 
             player.socialOverlay.on('modalclose', function () {
                 var player = this.player();
@@ -108,7 +105,7 @@
      * The overlay panel that is toggled when the SocialButton is clicked
      */
     var ModalDialog = videojs.getComponent('ModalDialog');
-    SocialOverlay = videojs.extend(videojs.getComponent('ModalDialog'), {
+    SocialOverlay = videojs.extend(ModalDialog, {
         buildCSSClass() {
             var buttonClass = ModalDialog.prototype.buildCSSClass();
             return 'vjs-sharing-container ' + buttonClass;
@@ -349,6 +346,9 @@
 
         el.appendChild(controlTextEl_);
     };
+
+    var ControlBar = videojs.getComponent('ControlBar');
+    ControlBar.prototype.options_.children.splice(ControlBar.prototype.options_.children.length - 1, 0, 'socialButton');
 
     videojs.registerComponent('SocialOverlay', SocialOverlay);
 
