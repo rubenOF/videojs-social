@@ -22,7 +22,7 @@ url
 embedCode
 
     Type: string
-    This is the Brightcove player iframe embed code for sharing the video. This allows you to completely override the contents of the Embed Code field located in the sharing dialog.
+    This is iframe embed code for sharing the video. This allows you to completely override the contents of the Embed Code field located in the sharing dialog.
     Social Media Embed Code
     You can get the value of this property by using the getEmbedCode() method.
 
@@ -54,3 +54,15 @@ Include all service properties in this object. To enable or disable support for 
         Type: boolean
         Default: true
         This enables the LinkedIn sharing icon
+    mail
+        Type: boolean
+        Default: true
+        This enables the mail sharing icon
+    link
+        Type: boolean
+        Default: true
+        This enables the link sharing icon
+    embed
+        Type: boolean
+        Default: true
+        This enables the embed sharing icon
