@@ -22,9 +22,8 @@ url
 embedCode
 
     Type: string
-    This is iframe embed code for sharing the video. This allows you to completely override the contents of the Embed Code field located in the sharing dialog.
+    This is iframe embed code for sharing the video. This allows you to set the contents of the Embed Code field located in the sharing dialog.
     Social Media Embed Code
-    You can get the value of this property by using the getEmbedCode() method.
 
 services
 
