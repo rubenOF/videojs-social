@@ -13,14 +13,17 @@
             title: '',
             description: '',
             url: '',
-            embed: '',
+            embedCode: '',
             services: {
                 facebook: true,
                 google: true,
                 twitter: true,
                 tumblr: true,
                 pinterest: true,
-                linkedin: true
+                linkedin: true,
+                mail: true,
+                link: true,
+                embed: true
             },
             temporary: false,
         },
@@ -68,7 +71,7 @@
                     delete player.socialOverlay;
                 }
             }
-            // // Add social button to player
+            // Add social button to player
             videojs.options.children.push('socialButton');
 
             player.socialOverlay = player.addChild('socialOverlay', settings);
@@ -148,7 +151,6 @@
      * Iterates through the list of selected social services and creates their html
      */
     SocialOverlay.prototype._addSocialButtons = function (services) {
-
         var service, el, title;
 
         el = videojs.dom.createEl('div', {
@@ -205,7 +207,10 @@
      *  Binds the correct href url to the matching service button
      */
     SocialOverlay.prototype._bindServiceButton = function (service, encodedUrl, encodedTitle, encodedDescription, encodedPoster, posterUrl) {
-        var link, elementSelector;
+        var el,
+            link,
+            elementSelector,
+            options = this.options_;
 
         // Switch on the requested service
         switch (service) {
@@ -257,13 +262,47 @@
 
                 break;
 
+            // mail
+            case 'mail':
+                // Bind mail button
+                elementSelector = '.vjss-envelope-o';
+                link = 'mailto:?body={URL}'.replace('{URL}', encodedUrl);
+
+                break;
+
+            // Link
+            case 'link':
+                // Bind link button
+                elementSelector = '.vjss-link';
+                el = this.el().querySelector(elementSelector);
+
+                el.querySelector('textarea').innerHTML = this._getUrl();
+                el.addEventListener('click', this.copyTextareaClipboard.bind(this, el));
+
+                return;
+
+            // embed
+            case 'embed':
+                if (options.embedCode) {
+                    return;
+                }
+
+                // Bind embed button
+                elementSelector = '.vjss-code';
+                el = this.el().querySelector(elementSelector);
+
+                el.querySelector('textarea').innerHTML = this.htmlEntities(options.embedCode);
+                el.addEventListener('click', this.copyTextareaClipboard.bind(this, el));
+
+                return;
+
             default:
                 throw new Error('An unsupported social service was specified.');
         }
 
         if (elementSelector) {
-            var elt = this.el().querySelector(elementSelector);
-            elt.href = link;
+            el = this.el().querySelector(elementSelector);
+            el.href = link;
         }
     };
 
@@ -288,6 +327,33 @@
 
         return url;
     };
+
+    /*
+     * Convert some HTML entities to their applicable characters
+     */
+    SocialOverlay.prototype.htmlEntities = function (str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    /*
+     * Copy element textarea to clipboard.
+     */
+    SocialOverlay.prototype.copyTextareaClipboard = function (el) {
+        // Copy text.
+        var copyText = el.querySelector('textarea');
+        copyText.select();
+        document.execCommand('Copy');
+
+        // Show copied popup.
+        this.addClass('vjs-sharing-container-copied');
+        setTimeout(function () {
+            this.removeClass('vjs-sharing-container-copied');
+        }.bind(this), 1500);
+    }
 
     /*
      * Updates the title based on the media date or the custom options setting
@@ -319,6 +385,7 @@
 
         var link = '';
         var player = this.player();
+        var options = this.options_;
 
         // Switch on the requested service
         switch (service) {
@@ -352,6 +419,25 @@
                 link = '<a class="vjs-icon-linkedin" aria-role="link" aria-label="Share on LinkedIn" tabindex="6" title="LinkedIn" target="_blank"><span class="vjs-control-text">LinkedIn</span></a>';
                 break;
 
+            // mail
+            case 'mail':
+                link = '<a class="vjss-icon vjss-envelope-o" aria-role="link" aria-label="Share via mail" tabindex="7" title="Mail"><span class="vjs-control-text">Mail</span></a>';
+                break;
+
+            // Link
+            case 'link':
+                link = '<a class="vjss-icon vjss-link" aria-role="link" aria-label="Copy link to clipboard" tabindex="8" title="Copy link"><span class="vjs-control-text">Copy link</span><textarea readonly="true" aria-hidden="true"></textarea></a>';
+                break;
+
+            // embed
+            case 'embed':
+                if (options.embedCode) {
+                    return;
+                }
+
+                link = '<a class="vjss-icon vjss-code" aria-role="link" aria-label="Copy embedcode" tabindex="9" title="Copy embedcode"><span class="vjs-control-text">Copy embedcode</span><textarea readonly="true" aria-hidden="true"></textarea></a>';
+                break;
+
             default:
                 throw new Error('An unsupported social service was specified.');
         }
@@ -365,7 +451,9 @@
     };
 
     var ControlBar = videojs.getComponent('ControlBar');
+    var Player = videojs.getComponent('Player');
     ControlBar.prototype.options_.children.splice(ControlBar.prototype.options_.children.length - 1, 0, 'socialButton');
+    Player.prototype.options_.children.splice(Player.prototype.options_.children.length - 1, 0, 'socialInlineButton');
 
     videojs.registerComponent('SocialOverlay', SocialOverlay);
 

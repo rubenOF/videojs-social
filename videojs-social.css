@@ -1,3 +1,74 @@
+@font-face {
+  font-family: VideoJS;
+  src: url("fonts/videojs-social.eot?b0qe2z#iefix") format("eot");
+}
+
+@font-face {
+  font-family: videojs-social;
+  src: url(data:application/font-woff;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SDcsAAAC8AAAAYGNtYXAAwNInAAABHAAAAGRnYXNwAAAAEAAAAYAAAAAIZ2x5ZuH7nlEAAAGIAAADWGhlYWQQmdsZAAAE4AAAADZoaGVhB+wEEQAABRgAAAAkaG10eBIAACgAAAU8AAAAHGxvY2EBbAJIAAAFWAAAABBtYXhwAAsAgwAABWgAAAAgbmFtZcDcYPkAAAWIAAAB2nBvc3QAAwAAAAAHZAAAACAAAwOAAZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADxIQPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQASAAAAA4ACAACAAYAAQAg8APwwfEh//3//wAAAAAAIPAD8MHxIf/9//8AAf/jEAEPRA7lAAMAAQAAAAAAAAAAAAAAAAAAAAEAAf//AA8AAQAAAAAAAAAAAAIAADc5AQAAAAABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAwAAAAAEAAMlABwANwBHAAAlEQ4BBw4BBw4BKwEiJicuAScuAScRFBYzITI2NRE0JiMhIgYVFBYXHgEXHgE7ATI2Nz4BNz4BNTcRFAYjISImNRE0NjMhMhYDtwkUCz16PCBPLAIsTyA8ej0LFAkLBwNKBwsCEPy2BwsuJjpyORdIHgIeSBc5cjocOEk2Jfy2JTY2JQNKJTZbAbcKEwgwYDIbNTUbMmAwCBMK/kkHCwsHAlkLHAsHMVMeLVstEzo6Ey1bLRZTJBX9kiU2NiUCbiY2NgADAAkACQOuA64AIwBIAIAAAAE0Ji8BLgEjIgYHHgEVFAYjIiYnDgEVFBYfAR4BMzI2PwE+AQE0Ji8BLgEjIgYPAQ4BFRQWHwEeATMyNjcuATU0NjMyFhc+ATUBFAYPAQ4BIyImLwEuATU0NjcnDgEjIiYvAS4BNTQ2PwE+ATMyFh8BHgEVFAYHFz4BMzIWHwEeAQNACAh3CBQLDBQJDhsgFxUcDwkJCAh1CBQLCxQIVAgI/m4ICHUIFQoLFAhUCAgICHcHFQsMFAkOGyAWFhwOCQoCABoXVBc8ISE8F3YXGRsYMxc+ISE9F3cXGRoXVBc8ISE8F3YXGBoYMhg9IiE9F3cXGQEACxQIdwcJCgkOHBYWIBsOCRQNCxQIdggICAdUBxQBngsUCHYICAgHVAgTCwsUCHcIBwgJDxwVFyAbDgkUDf5tITwXUxgYGRh2FzwhIj4XMxgbGRd3GDwhID0XUxcZGRh2Fz0gIj4YMhgaGBh2GDwAAAAAAwAfAAsEKgMaABUAJgA8AAAlBwYiJwEmNDcBNjIfARYUDwEXFhQHAQMOAS8BLgE3Ez4BHwEeAQcJAQYiLwEmND8BJyY0PwE2MhcBFhQHAWEdBg8F/vUFBQELBQ8GHQUF4eEFBQFR1QINByQHBwLVAg0HJAcHAgF4/vUFDwYcBgbg4AYGHAYPBQELBQWXHAYGAQoGDwUBCwUFHQUQBeHgBg8GAmL9HgcHAgoCDQcC4gcIAgoCDgf+jP72BgYcBg8G4OEFEAUdBQX+9QUPBgAAAAEAAAABAACA4IRVXw889QALBAAAAAAA1qjLNwAAAADWqMs3AAAAAAQqA64AAAAIAAIAAAAAAAAAAQAAA8D/wAAABEkAAAAABCoAAQAAAAAAAAAAAAAAAAAAAAcEAAAAAAAAAAAAAAACAAAABAAAAAO3AAkESQAfAAAAAAAKABQAHgCIAUQBrAABAAAABwCBAAMAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAADgCuAAEAAAAAAAEADgAAAAEAAAAAAAIABwCfAAEAAAAAAAMADgBLAAEAAAAAAAQADgC0AAEAAAAAAAUACwAqAAEAAAAAAAYADgB1AAEAAAAAAAoAGgDeAAMAAQQJAAEAHAAOAAMAAQQJAAIADgCmAAMAAQQJAAMAHABZAAMAAQQJAAQAHADCAAMAAQQJAAUAFgA1AAMAAQQJAAYAHACDAAMAAQQJAAoANAD4dmlkZW9qcy1zb2NpYWwAdgBpAGQAZQBvAGoAcwAtAHMAbwBjAGkAYQBsVmVyc2lvbiAxLjAAVgBlAHIAcwBpAG8AbgAgADEALgAwdmlkZW9qcy1zb2NpYWwAdgBpAGQAZQBvAGoAcwAtAHMAbwBjAGkAYQBsdmlkZW9qcy1zb2NpYWwAdgBpAGQAZQBvAGoAcwAtAHMAbwBjAGkAYQBsUmVndWxhcgBSAGUAZwB1AGwAYQBydmlkZW9qcy1zb2NpYWwAdgBpAGQAZQBvAGoAcwAtAHMAbwBjAGkAYQBsRm9udCBnZW5lcmF0ZWQgYnkgSWNvTW9vbi4ARgBvAG4AdAAgAGcAZQBuAGUAcgBhAHQAZQBkACAAYgB5ACAASQBjAG8ATQBvAG8AbgAuAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.vjss-icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'videojs-social' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  cursor: pointer;
+}
+
+.vjss-envelope-o:before {
+  content: "\f003";
+}
+.vjss-link:before {
+  content: "\f0c1";
+}
+.vjss-code:before {
+  content: "\f121";
+}
+
+.vjs-sharing-icon-container textarea {
+  position: absolute;
+  left: -999999px;
+}
+.vjs-sharing-container:after {
+  content: 'Copied to clipboard';
+  position: absolute;
+  display: block;
+  text-align: center;
+
+  background-color: #fff;
+  border-radius: 10px;
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+
+  bottom: 20px;
+  width: 140px;
+  margin-left: -70px;
+  padding: 2px 5px;
+  left: 50%;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all .2s ease-in-out;
+  visibility: hidden;
+}
+.vjs-sharing-container-copied:after {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible
+}
 .vjs-sharing-container .vjs-sharing-content {
   display: table-cell;
   height: 100%;
@@ -75,7 +146,7 @@
 .video-js .vjs-modal-dialog.vjs-sharing-container {
   background: rgba(0,0,0,.8);
 }
-.vjs-share-button .vjs-icon-placeholder::before {
+.vjs-share-button .vjs-icon-placeholder:before {
   content: "\f10f";
 }
 .video-js .vjs-share-button .vjs-icon-placeholder {
